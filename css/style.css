@@ -1,5 +1,30 @@
+body{
+    background-color: rgb(143, 143, 234);
+}
+
 #imgContainer{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8vw;
+}
+
+.minifig-img {
+    width: 200px;
+    height: 250px;
+    object-fit: contain;
+}
+
+#popUpScreen {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.popUpInfo {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }

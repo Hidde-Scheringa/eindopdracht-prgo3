@@ -86,6 +86,7 @@ const imgDiv = document.getElementById("imgContainer");
 for (let i = 0; i < imageList.length; i++) {
     const minifigImages = document.createElement("div");
     const minifigImg = document.createElement("img");
+    minifigImg.classList.add("minifig-img");
     
     minifigImg.src = "./img/" + imageList[i] + ".png"
     
@@ -95,15 +96,28 @@ for (let i = 0; i < imageList.length; i++) {
         const minifigNames = this.getAttribute('minifig-info');
         const minifigInfo = minifigDetails[minifigNames];
         if (minifigInfo) {
-            alert(
+            const popUpData = document.getElementById('popUpData');
+            popUpData.innerHTML =
             `Name: ${minifigInfo.name},
             Religion: ${minifigInfo.religion},
             Race: ${minifigInfo.race},
             Profession: ${minifigInfo.profession},
-            Set: ${minifigInfo.set}`)
+            Set: ${minifigInfo.set}`;
+
+            const popUp = document.getElementById('popUpScreen');
+            popUp.style.display = "block";
+
+            const closingPopUp = document.getElementById("close");
+            closingPopUp.onclick = function () {
+                const popUp = document.getElementById('popUpScreen');
+                popUp.style.display = "none";
+            }
         }
+        
     });
 
     minifigImages.appendChild(minifigImg);
     imgDiv.appendChild(minifigImages);
 }
+
+
