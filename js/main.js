@@ -105,7 +105,7 @@ function imgClickHandler() {
     const minifigImgs = document.querySelectorAll('.minifig-img');
 
     minifigImgs.forEach(minifigImg => {
-        minifigImg.addEventListener('click', function () {
+        minifigImg.addEventListener('click', function (e) {
             const minifigNames = this.getAttribute('minifig-info');
             const minifigInfo = minifigDetails[minifigNames];
             if (minifigInfo) {
@@ -117,8 +117,14 @@ function imgClickHandler() {
                 Profession: ${minifigInfo.profession},
                 Set: ${minifigInfo.set}`;
 
+                const rect = e.target.getBoundingClientRect();
+                const imgLeft = rect.left;
+                const imgTop  = rect.top;
+
                 const popUp = document.getElementById('popUpScreen');
                 popUp.style.display = "block";
+                popUp.style.left = imgLeft + 'px';
+                popUp.style.top = (imgTop + e.target.offsetHeight) + 'px';
 
                 const closingPopUp = document.getElementById("close");
                 closingPopUp.onclick = function () {
