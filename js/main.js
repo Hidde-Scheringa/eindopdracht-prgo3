@@ -1,3 +1,5 @@
+window.addEventListener('load', init);
+
 const imageList = ['ahsoka tano', 'boba fett', 'cad bane', 'darth vader','din djarin','kanan jarrus','rex','sabine','thrawn','yularen'];
 
 const minifigDetails = {
@@ -80,44 +82,59 @@ const minifigDetails = {
     }
 };
 
+function imgCreator() {
+    const imgDiv = document.getElementById("imgContainer");
 
-const imgDiv = document.getElementById("imgContainer");
+    for (let i = 0; i < imageList.length; i++) {
+        const minifigImages = document.createElement("div");
+        const minifigImg = document.createElement("img");
+        minifigImg.classList.add("minifig-img");
 
-for (let i = 0; i < imageList.length; i++) {
-    const minifigImages = document.createElement("div");
-    const minifigImg = document.createElement("img");
-    minifigImg.classList.add("minifig-img");
-    
-    minifigImg.src = "./img/" + imageList[i] + ".png"
-    
-    minifigImg.setAttribute('minifig-info', imageList[i]);
+        minifigImg.src = "./img/" + imageList[i] + ".png"
 
-    minifigImg.addEventListener('click', function () {
-        const minifigNames = this.getAttribute('minifig-info');
-        const minifigInfo = minifigDetails[minifigNames];
-        if (minifigInfo) {
-            const popUpData = document.getElementById('popUpData');
-            popUpData.innerHTML =
-            `Name: ${minifigInfo.name},
-            Religion: ${minifigInfo.religion},
-            Race: ${minifigInfo.race},
-            Profession: ${minifigInfo.profession},
-            Set: ${minifigInfo.set}`;
+        minifigImg.setAttribute('minifig-info', imageList[i]);
 
-            const popUp = document.getElementById('popUpScreen');
-            popUp.style.display = "block";
 
-            const closingPopUp = document.getElementById("close");
-            closingPopUp.onclick = function () {
+        minifigImages.appendChild(minifigImg);
+        imgDiv.appendChild(minifigImages);
+    }
+}
+
+function imgClickHandler() {
+
+    const minifigImgs = document.querySelectorAll('.minifig-img');
+
+    minifigImgs.forEach(minifigImg => {
+        minifigImg.addEventListener('click', function () {
+            const minifigNames = this.getAttribute('minifig-info');
+            const minifigInfo = minifigDetails[minifigNames];
+            if (minifigInfo) {
+                const popUpData = document.getElementById('popUpData');
+                popUpData.innerHTML =
+                    `Name: ${minifigInfo.name},
+                Religion: ${minifigInfo.religion},
+                Race: ${minifigInfo.race},
+                Profession: ${minifigInfo.profession},
+                Set: ${minifigInfo.set}`;
+
                 const popUp = document.getElementById('popUpScreen');
-                popUp.style.display = "none";
+                popUp.style.display = "block";
+
+                const closingPopUp = document.getElementById("close");
+                closingPopUp.onclick = function () {
+                    const popUp = document.getElementById('popUpScreen');
+                    popUp.style.display = "none";
+                }
             }
-        }
-        
+        });
     });
 
-    minifigImages.appendChild(minifigImg);
-    imgDiv.appendChild(minifigImages);
 }
+
+function init() {
+    imgCreator()
+    imgClickHandler()
+}
+
 
 

@@ -1,17 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body{
     background-color: rgb(143, 143, 234);
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', sans-serif;
+    text-shadow: darkblue 3px 5px;
+    color: white;
 }
 
 #imgContainer{
     display: flex;
     flex-wrap: wrap;
     gap: 8vw;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    
 }
 
 .minifig-img {
-    width: 200px;
-    height: 250px;
-    object-fit: contain;
+    width: 210px;
+    height: 350px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
 }
 
 #popUpScreen {
