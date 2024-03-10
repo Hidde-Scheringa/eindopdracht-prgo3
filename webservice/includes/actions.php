@@ -2,7 +2,7 @@
 /**
  * @return array
  */
-function getDishes()
+function getMinifigs()
 {
     return [
         [
