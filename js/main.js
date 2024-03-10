@@ -118,8 +118,8 @@ function imgClickHandler() {
                 Set: ${minifigInfo.set}`;
 
                 const rect = e.target.getBoundingClientRect();
-                const imgLeft = rect.left;
-                const imgTop  = rect.top;
+                const imgLeft = rect.left + window.pageXOffset; // Adjust for scroll
+                const imgTop  = rect.top + window.pageYOffset;  // Adjust for scroll
 
                 const popUp = document.getElementById('popUpScreen');
                 popUp.style.display = "block";
@@ -141,6 +141,3 @@ function init() {
     imgCreator()
     imgClickHandler()
 }
-
-
-
