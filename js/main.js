@@ -100,6 +100,20 @@ function imgCreator() {
     }
 }
 
+function starButtonColorChangeOnClick() {
+    
+    let starButton = document.getElementById('starButton');
+    document.addEventListener('click', function(e) {
+        if (starButton.style.color === 'grey') {
+            starButton.style.color = 'yellow';
+        } else {
+            starButton.style.color = 'grey'
+        };
+    });
+
+    
+}
+
 function imgClickHandler() {
 
     const minifigImgs = document.querySelectorAll('.minifig-img');
@@ -111,15 +125,15 @@ function imgClickHandler() {
             if (minifigInfo) {
                 const popUpData = document.getElementById('popUpData');
                 popUpData.innerHTML =
-                    `Name: ${minifigInfo.name},
-                Religion: ${minifigInfo.religion},
-                Race: ${minifigInfo.race},
-                Profession: ${minifigInfo.profession},
-                Set: ${minifigInfo.set}`;
+                    `Name: ${minifigInfo.name}.<br>
+                Religion: ${minifigInfo.religion}.<br>
+                Race: ${minifigInfo.race}.<br>
+                Profession: ${minifigInfo.profession}.<br>
+                Set: ${minifigInfo.set}.<br>`;
 
                 const rect = e.target.getBoundingClientRect();
-                const imgLeft = rect.left + window.scrollX; // Adjust for scroll
-                const imgTop = rect.top + window.scrollY;  // Adjust for scroll
+                const imgLeft = rect.left + window.scrollX;
+                const imgTop = rect.top + window.scrollY;
 
                 const popUp = document.getElementById('popUpScreen');
                 popUp.style.display = "block";
@@ -140,4 +154,5 @@ function imgClickHandler() {
 function init() {
     imgCreator()
     imgClickHandler()
+    starButtonColorChangeOnClick()
 }
