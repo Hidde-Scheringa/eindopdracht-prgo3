@@ -20,7 +20,12 @@ h1{
     justify-content: center;
 }
 
-
+.star-icon{
+    position: absolute;
+    color: gold;
+    font-size: 2rem;
+    margin-right: 10vw;
+}
 
 .minifig-img {
     width: 210px;
@@ -28,38 +33,92 @@ h1{
     border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
-    margin-bottom: 11vh;
     background-color: white;
-    box-shadow: 11px 11px 15px 8px rgba(0, 0, 0, 0.5);    
+    box-shadow: 11px 11px 15px 8px rgba(0, 0, 0, 0.5);  
+    cursor: pointer;  
 }
 
-#popUpScreen {
-    display: none;
+.minifig-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-button{
+    width: 13.5vw;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(54, 54, 126);
+    cursor: pointer;
+}
+
+.minifig-container.favorite::before {
+    content: "\2605";
     position: absolute;
-    width: 13.9%;
+    top: 5px;
+    right: 5px;
+    color: gold;
+    font-size: 24px;
 }
 
-#close{
-    margin-bottom: 5px;
-    background-color: rgb(54, 54, 126);
+.modal {
+    width: 30vw;
+    opacity: 0;
+    transition: all 0.7s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: none;
+    border-radius: 16px;
+    padding: 0px;
+    box-shadow: 0 16px 22px 0 rgba(0, 0, 0, 0.6);
+}
+
+.modal[open] {
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    outline: none;
+    appearance: none;
+    color: goldenrod;
+    background: none;
+    border: 0;
+    font-weight: bold;
+    font-size: 22px;
     cursor: pointer;
 }
 
-#starButton{
-    margin-bottom: 5px;
-    background-color: rgb(54, 54, 126);
-    cursor: pointer;
-    color: grey;
-}
-
-.popUpInfo {
+.modal-content h1 {
+    margin: 0;
+    padding: 20px;
     background-color: rgb(69, 69, 151);
     color: white;
-    padding: 10px;
-    border: 3px solid black;
-    border-radius: 10px;
-    text-shadow: rgb(0, 0, 0) 2px 3px;
-    font-family: 'Press Start 2P', sans-serif;
-    font-size: 0.7rem;
-    line-height: 1.7;
+    text-transform: capitalize;
+    width: 27.7vw;
+}
+
+.modal-content img {
+    display: block;
+    margin: auto;
+}
+
+.modal-content::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 10%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }

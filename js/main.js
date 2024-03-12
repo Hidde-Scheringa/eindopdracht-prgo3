@@ -1,7 +1,7 @@
 window.addEventListener('load', init);
 
+const webserviceUrl = 'http://localhost/programeren%203/eindopdracht/webservice/'
 const imageList = ['ahsoka tano', 'boba fett', 'cad bane', 'darth vader', 'din djarin', 'kanan jarrus', 'rex', 'sabine', 'thrawn', 'yularen'];
-
 const minifigDetails = {
     'ahsoka tano': {
         name: 'Ahsoka Tano',
@@ -35,7 +35,7 @@ const minifigDetails = {
 
     'din djarin': {
         name: 'Din Djarin',
-        religion: 'Mandolorian',
+        religion: 'Mandalorian',
         race: 'Mandalorian',
         profession: 'Father and bounty hunter',
         set: '75331 UCS Razor Crest'
@@ -59,7 +59,7 @@ const minifigDetails = {
 
     'sabine': {
         name: 'Sabine Wren',
-        religion: 'Bounty hunter',
+        religion: 'Mandalorian',
         race: 'Mandalorian',
         profession: 'Rebel',
         set: '75362 T-6 shuttle'
@@ -88,71 +88,68 @@ function imgCreator() {
     for (let i = 0; i < imageList.length; i++) {
         const minifigImages = document.createElement("div");
         const minifigImg = document.createElement("img");
+        const favoriteButton = document.createElement('button');
+        const starIcon = document.createElement('div')
+        starIcon.classList.add('star-icon')
+        starIcon.innerHTML = '★'
+        
+        favoriteButton.innerHTML = 'Favoriet';
+        favoriteButton.classList.add('favorite-button')
+        favoriteButton.id = 'favoriteButton' + i;
+        minifigImages.classList.add("minifig-container");
+        
         minifigImg.classList.add("minifig-img");
-
         minifigImg.src = "./img/" + imageList[i] + ".png"
-
         minifigImg.setAttribute('minifig-info', imageList[i]);
 
-
-        minifigImages.appendChild(minifigImg);
-        imgDiv.appendChild(minifigImages);
-    }
-}
-
-function starButtonColorChangeOnClick() {
-    
-    let starButton = document.getElementById('starButton');
-    document.addEventListener('click', function(e) {
-        if (starButton.style.color === 'grey') {
-            starButton.style.color = 'yellow';
-        } else {
-            starButton.style.color = 'grey'
+        favoriteButton.onclick = function(){
+            if (minifigImages.contains(starIcon)) {
+                minifigImages.removeChild(starIcon);
+            } else {
+                minifigImages.insertBefore(starIcon, minifigImg);
+            };
         };
-    });
-
-    
-}
+        minifigImages.appendChild(minifigImg);
+        minifigImages.appendChild(favoriteButton)
+        imgDiv.appendChild(minifigImages);
+    };
+};
 
 function imgClickHandler() {
-
     const minifigImgs = document.querySelectorAll('.minifig-img');
-
     minifigImgs.forEach(minifigImg => {
-        minifigImg.addEventListener('click', function (e) {
-            const minifigNames = this.getAttribute('minifig-info');
-            const minifigInfo = minifigDetails[minifigNames];
-            if (minifigInfo) {
-                const popUpData = document.getElementById('popUpData');
-                popUpData.innerHTML =
-                    `Name: ${minifigInfo.name}.<br>
-                Religion: ${minifigInfo.religion}.<br>
-                Race: ${minifigInfo.race}.<br>
-                Profession: ${minifigInfo.profession}.<br>
-                Set: ${minifigInfo.set}.<br>`;
-
-                const rect = e.target.getBoundingClientRect();
-                const imgLeft = rect.left + window.scrollX;
-                const imgTop = rect.top + window.scrollY;
-
-                const popUp = document.getElementById('popUpScreen');
-                popUp.style.display = "block";
-                popUp.style.left = imgLeft + 'px';
-                popUp.style.top = (imgTop + e.target.offsetHeight) + 'px';
-
-                const closingPopUp = document.getElementById("close");
-                closingPopUp.onclick = function () {
-                    const popUp = document.getElementById('popUpScreen');
-                    popUp.style.display = "none";
-                }
-            }
-        });
-    });
-
+    minifigImg.addEventListener('click', function(e){ 
+        minifigDetailPopUp(e)
+    });  
+});   
 }
+
+function minifigDetailPopUp(e) {
+    let popUp = document.getElementById('minifig-detail')
+    let popUpContent = document.getElementById('modal-content')
+    popUpContent.innerHTML = ''
+    let minifigData = e.target.getAttribute('minifig-info');
+    let minifigInfo = minifigDetails[minifigData]
+
+    minifigName = document.createElement('h1')
+    minifigName.innerHTML = `${minifigInfo.name}.`;
+
+    let minifigImg = document.createElement('img')
+    minifigImg.src = `./img/${minifigData}.png`;
+
+    popUpContent.appendChild(minifigName)
+    popUpContent.appendChild(minifigImg)
+
+    popUp.showModal()
+
+    const closeButton = document.getElementById('closeButton')
+    closeButton.addEventListener('click', function () {
+        popUp.close()
+    });
+}
+
 
 function init() {
     imgCreator()
     imgClickHandler()
-    starButtonColorChangeOnClick()
 }

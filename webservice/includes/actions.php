@@ -29,7 +29,7 @@ function getMinifigs()
             "id" => 5,
             "name" => "Phase 2 captain Rex",
             "genre" => "Star Wars The Clone Wars",
-        ]
+        ],
 
         [
             "id" => 6,
@@ -67,44 +67,74 @@ function getMinifigDetails($id)
 {
     $tags = [
         1 => [
-            "minifig" => "Darth Vader",
-            "tags" => ['Sithlord', 'Star Wars']
+            'name' => 'Ahsoka Tano',
+            'religion' => 'Jedi',
+            'race' => 'Togruta',
+            'profession' => 'Rebel',
+            'set' => '75362 T-6 shuttle'
         ],
         2 => [
-            "minifig" => "Ahsoka Tano",
-            "tags" => ['Jedi', 'Rebels', 'Clone Wars']
+            'name' => 'Boba Fett',
+            'religion' => 'Mandalorian',
+            'race' => 'Mandalorian',
+            'profession' => 'Bounty hunter',
+            'set' => '10123 Cloud city'
         ],
         3 => [
-            "minifig" => "Cad bane",
-            "tags" => ['Bounty hunter','Blue']
+            'name' => 'Cad Bane',
+            'religion' => 'None',
+            'race' => 'Duros',
+            'profession' => 'Bounty hunter',
+            'set' => '75323 The Justifier'
         ],
         4 => [
-            "minifig" => "Cloud city Boba Fett",
-            "tags" => ['Bounty hunter', 'Star Wars']
+            'name' => 'Darth Vader',
+            'religion' => 'Sith lord',
+            'race' => 'Human',
+            'profession' => 'Palpatines right hand',
+            'set' => '75352 Emperors Throne Room'
         ],
         5 => [
-            "minifig" => "Phase 2 captain Rex",
-            "tags" => ['Clone','Captain','501st']
+            'name' => 'Din Djarin',
+            'religion' => 'Mandalorian',
+            'race' => 'Mandalorian',
+            'profession' => 'Father and bounty hunter',
+            'set' => '75331 UCS Razor Crest'
         ],
         6 => [
-            "minifig" => "Kanen Jarrus",
-            "tags" => ['Jedi', 'Master','Father']
+            'name' => 'Kanan Jarrus',
+            'religion' => 'Jedi',
+            'race' => 'Human',
+            'profession' => 'Rebel',
+            'set' => '75141 Kanans speeder bike'
         ],
         7 => [
-            "minifig" => "Grand admiral Thrawn",
-            "tags" => ['Chiss', 'The empire']
+            'name' => 'Rex',
+            'religion' => 'None',
+            'race' => 'Clone',
+            'profession' => 'Soldier',
+            'set' => '75367 UCS Venator'
         ],
         8 => [
-            "minifig" => "Admiral Yularen",
-            "tags" => ['Venator', 'The republic']
+            'name' => 'Sabine Wren',
+            'religion' => 'Mandalorian',
+            'race' => 'Mandalorian',
+            'profession' => 'Rebel',
+            'set' => '75362 T-6 shuttle'
         ],
         9 => [
-            "minifig" => "Din Djarin",
-            "tags" => ['The Mandalorian', 'Father', 'Bounty hunter']
+            'name' => 'Mitth raw naruodo also know as Thrawn',
+            'religion' => 'None',
+            'race' => 'Chiss',
+            'profession' => 'Grand admiral of the Galactic Empire',
+            'set' => '75170 The Phantom'
         ],
         10 => [
-            "minifig" => "Sabine",
-            "tags" => ['Rebel', 'Mandalorian']
+            'name' => 'Wullf Yularen',
+            'religion' => 'None',
+            'race' => 'Human',
+            'profession' => 'Admiral for the clone army and Galactic Empire',
+            'set' => '75367 UCS Venator'
         ],
     ];
 
