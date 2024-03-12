@@ -102,11 +102,21 @@ function imgCreator() {
         minifigImg.src = "./img/" + imageList[i] + ".png"
         minifigImg.setAttribute('minifig-info', imageList[i]);
 
+        //imgList[i] wordt gebruikt om te achterhalen op welke favoriet knop is gedrukt, door dit te bekijken in welk plaatje dit is gebeurt 
+        if (localStorage.getItem(imageList[i])) {
+            minifigImages.appendChild(starIcon);
+        };
+
         favoriteButton.onclick = function(){
             if (minifigImages.contains(starIcon)) {
                 minifigImages.removeChild(starIcon);
+                //hier wordt de ster verwijderd uit de localstorage. Ook hier weten we om welke knop het gaat omdat deze gekoppeld is aan de imageList[i] 
+                localStorage.removeItem(imageList[i]);
             } else {
                 minifigImages.insertBefore(starIcon, minifigImg);
+                //Hier wordt de ster aan de localstorage toegevoegd. aan de hand van de unieke naam van het plaatje weet je welke 
+                //knop is ingedrukt want elke knop is gekoppeld aan die naam.
+                localStorage.setItem(imageList[i], true);
             };
         };
         minifigImages.appendChild(minifigImg);
